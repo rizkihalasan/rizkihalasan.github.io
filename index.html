@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+ <head>
+ <title> Kompleksitas Perkalian Matriks </title>
+<link rel="stylesheet" type="text/css" href="index.css">
+</head> 
+
+<body>
+
+<div id="container">
+<h1>Kompleksitas Perkalian Matriks</h1>
+<p>Matriks adalah susunan sekelompok bilangan dalam suatu jajaran berbentuk persegi ataupun persegi panjang yang diatur berdasarkan baris dan kolom.</p>
+<p>Matriks mempunyai aplikasi dalam kehidupan sehari-hari, yaitu : program linear, analisis permasalahan di bidang ekonomi, menghitung rotasi matriks, dan sebagainya.</p>
+<p>Perkalian matriks adalah suatu operasi dari dua matriks. Syarat agar 2 matriks tersebut dapat dikalikan adalah jumlah kolom matriks pertama harus sama dengan jumlah baris matriks kedua.</p>
+<p>Proses perkalian matriks adalah dengan memasangkan baris pada matriks pertama dengan kolom pd matriks kedua dan menjumlahkan semua perkalian dimulai dari kolom pertama matriks pertama dikali dengan baris pertama matriks kedua sampai dengan kolom terakhir matriks pertama dikali dengan baris terakhir matriks kedua.</p>
+<p>Sebagai contoh:</p>
+<img src="matriks1.png"><br>
+<img src="matriks2.png"><br>
+<img src="matriks3.png"><br>
+<p>Sebagai operasi dasar dari matriks, maka perkalian matriks cukup banyak dipakai dalam kehidupan nyata. Karena cukup banyak yang menggunakan perkalian matriks, maka ilmuwan di bidang matematika dan komputer berusaha mencari algoritma perkalian matriks yang seefisien mungkin. Apabila perkalian matriks diimplementasikan seperti pada contoh, maka kompleksitas algoritmanya adalah O(n<sup>3</sup>). Namun telah ditemukan beberapa algoritma perkalian matriks yang lebih efisien, salah satunya adalah algoritma Strassen.</p>
+<p>Ide dari algoritma Strassen adalah mengurangi jumlah perkalian yang berjumlah n<sup>3</sup> menjadi n<sup><sup>2</sup>log7</sup> untuk matriks berukuran n x n. Dengan begitu, maka kompleksitas perkalian matriks yang O(n<sup>3</sup>) dapat diperkecil menjadi O(n<sup><sup>2</sup>log7</sup>)=O(n<sup>2.807</sup>). Cara membuat perkalian matriks tersebut sehingga cukup menjadi 7 adalah sebagai berikut :</p>
+<p>Untuk dua matriks berukuran 2<sup>n</sup> x 2<sup>n</sup>, dengan C adalah hasil dari perkalian 2 matriks tersebut.</p>
+<img src="matriks4.png"><br>
+<p>C(1,1) = A(1,1)*B(1,1) + A(1,2) *B(2,1)<br />C(1,2) = A(1,1)*B(1,2) + A(1,2) *B(2,2)<br />C(2,1) = A(2,1)*B(1,1) + A(2,2) *B(2,1)<br />C(2,2) = A(2,1)*B(1,2) + A(2,2) *B(2,2)<br />Dengan A(i,j),B(i,j),C(i,j) adalah matriks berukuran n-1 dari matriks A, B, C</p>
+<p>Untuk mengurangi perkalian dari 8 menjadi 7, dibuatlah perkalian baru yang berasal dari elemen-elemen pada matriks A dan matriks B. Tujuh perkalian baru tersebut nantinya dapat membentuk matriks C. Perkalian-perkalian tersebut adalah:<br /> M1 = (A(1,1) * B(1,1))+(A(1,2)*(B(2,1))<br /> M2 = (A(1,1) * B(1,1)) * B(1,1)<br /> M3 = A(1,1) * (B(1,2)-B(2,2))<br /> M4 = A(2,2) * (B(2,1) - B(1,1))<br /> M5 = (A(1,1) + A(1,2)) * B(2,2)<br /> M6 = (A(2,1) - A(1,1)) * (B(1,1) + B(1,2))<br /> M7 = (A(1,2) - A(2,2)) * (B(2,1) + B(2,2))</p>
+<p>Dengan M1 sampai M7 kita dapat mendefinisikan C(1,1), C(1,2), C(2,1), C(2,2), yaitu:<br />C(1,1) = M1 + M4 - M5 + M7<br />C(1,2) = M3 + M5<br />C(2,1) = M2 + M4<br />C(2,2) = M1 - M2 + M3 + M6</p>
+<p>Walaupun mungkin penurunan kompleksitas algoritma dari algoritma biasa dengan algoritma Strassen, akan tetapai akan sangat berpengaruh apabila matriksnya berukuran besar. Sebagai contoh : Apabila matriks berukuran 1024*1024, dengan algoritma biasa, dibutuhkan 1024<sup>3</sup> = 1.073.741.824 kali penghitungan. Akan tetapi, apabila dengan dengan algoritma Strassen, dibutuhkan 1024<sup>2,807</sup> = 281.781.177 kali penghitungan, menciptakan perbedaan yang cukup jauh dibandingkan algoritma biasa.</p>
+
+Referensi : <br>
+- Aplikasi Matriks : <br>
+<a href=https://nadayasminsite.wordpress.com/2014/09/20/penerapan-konsep-matriks-dalam-kehidupan-sehari-hari/> https://nadayasminsite.wordpress.com/2014/09/20/penerapan-konsep-matriks-dalam-kehidupan-sehari-hari/</a> <br>
+- Perkalian Matriks : <br>
+<a href = https://moeslimar.wordpress.com/2011/11/18/algoritma-strassen/> https://moeslimar.wordpress.com/2011/11/18/algoritma-strassen/<br>
+
+</div>
+
+</body>
+
+
+</html>
